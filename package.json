@@ -1,6 +1,7 @@
 {
   "name": "next-ts-app",
   "version": "0.1.0",
+  "description": "Next.js TypeScript application example instrumented to collect code coverage using Cypress tests",
   "private": true,
   "scripts": {
     "dev": "next dev",
