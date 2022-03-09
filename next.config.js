@@ -4,8 +4,9 @@ const {getBranch, getSha} = require('@cypress/commit-info')
 const nextConfig = {
   reactStrictMode: true,
   generateBuildId: async () => {
-    const branch = await getBranch() || 'unknown branch'
-    const sha = await getSha() || 'unknown sha'
+    // make sure to use Vercel variables if available
+    const branch = process.env.VERCEL_GIT_COMMIT_REF || await getBranch() || 'unknown branch'
+    const sha = process.env.VERCEL_GIT_COMMIT_SHA || await getSha() || 'unknown sha'
     const buildId = `${branch}:::${sha}`
     console.log('generated build id "%s"', buildId)
     return buildId
